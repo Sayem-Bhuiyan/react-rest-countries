@@ -2,14 +2,19 @@ import PropTypes from 'prop-types'
 import './Country.css'
 import { useState } from 'react';
 
-const Country = ({country}) => {
+const Country = ({country, handleVisitedCountries}) => {
     const {name, flags, population, area, cca3} = country;
     const [visited, setVisited] = useState(false)
 
     const handleVisited = () => {
         setVisited(!visited)
     }
-        return (
+
+    // const passWithParams = () => {
+    //     handleVisitedCountries(country)
+    // }
+
+    return (
         <div className={`country ${visited ? "visited" : "non-visited"}`}>
             <img src={flags.png} alt="" />
             <h3 style={{
@@ -18,6 +23,9 @@ const Country = ({country}) => {
             <p>Population: {population}</p>
             <p>Area: {area}</p>
             <p><small>Code: {cca3}</small></p>
+            <button onClick={() => handleVisitedCountries(country)} 
+                    className='btn-visited'>Mark Visited</button>
+            <br />
             <button onClick={handleVisited} className='btn-visited'>
                 {visited ? "Visited" : "Visit"}
             </button>
@@ -28,6 +36,7 @@ const Country = ({country}) => {
     );
 };
 Country.propTypes = {
-    country: PropTypes.object
+    country: PropTypes.object,
+    handleVisitedCountries: PropTypes.func
 }
 export default Country;
