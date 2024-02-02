@@ -1,0 +1,23 @@
+.country {
+    border: 2px solid skyblue;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+}
+.country p {
+    margin: 0;
+}
+.btn-visited {
+    background-color: orangered;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+.btn-visited:focus {
+    outline: none;
+}
+.visited {
+    background-color: gray;
+}
