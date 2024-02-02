@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import './Country.css'
 import { useState } from 'react';
 
-const Country = ({country, handleVisitedCountries}) => {
+const Country = ({country, handleVisitedCountries, handleVisitedFlags}) => {
     const {name, flags, population, area, cca3} = country;
     const [visited, setVisited] = useState(false)
 
@@ -25,18 +25,22 @@ const Country = ({country, handleVisitedCountries}) => {
             <p><small>Code: {cca3}</small></p>
             <button onClick={() => handleVisitedCountries(country)} 
                     className='btn-visited'>Mark Visited</button>
+            <button onClick={() => handleVisitedFlags(country)}>Mark Flags</button>
             <br />
-            <button onClick={handleVisited} className='btn-visited'>
+
+            <button onClick={handleVisited}  className='btn-visited'>
                 {visited ? "Visited" : "Visit"}
             </button>
             {
                 visited ? 'I have visited this Country' : 'I want to visit.'
             }
+            
         </div>
     );
 };
 Country.propTypes = {
     country: PropTypes.object,
-    handleVisitedCountries: PropTypes.func
+    handleVisitedCountries: PropTypes.func,
+    handleVisitedFlags: PropTypes.func
 }
 export default Country;
